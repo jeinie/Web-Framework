@@ -31,11 +31,11 @@ const obj = {
 
     arrow: () => {
         console.log('obj.arrow(): ');
-        console.log(this); // undefined
+        console.log(this); // undefined (화살표 함수이므로 scope 무시하니까 this가 undefined)
 
         const arrowFunc1 = function() {
             console.log('obj.arrow(arrowFunc1()): ');
-            console.log(this);
+            console.log(this); // undefined
         };
         arrowFunc1();
 
@@ -48,7 +48,8 @@ const obj = {
         const arrowFunc3 = function() {
             console.log('obj.func(funcFunc3().bind(this));');
             console.log(this); // undefined
-        }.bind(this); // undefined
+        }.bind(this); // undefined (여기서는 this가 undefined이므로 아무리 bind 해줘도 undefined)
+        // 그래서 arrowFunc4() 처럼 obj 를 명시적으로 bind 해줘야 함
         arrowFunc3();
 
         const arrowFunc4 = function() {
