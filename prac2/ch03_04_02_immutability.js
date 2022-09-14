@@ -4,12 +4,13 @@ let color_lawn = {
     rating: 0
 }
 
-function rateColor(obj, rating) {
+var rateColor = function(obj, rating) {
+    // 원본 유지, 복사본 수정
     return Object.assign({}, obj, {rating:rating})
 }
 
 console.log(color_lawn.rating)
 
-// 변경
 console.log(rateColor(color_lawn, 5).rating)
-console.log(color_lawn.rating)
+console.log(color_lawn.rating) // 원본 유지
+

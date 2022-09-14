@@ -4,13 +4,13 @@ let color_lawn = {
     rating: 0
 }
 
-function rateColor(obj, rating) {
-    obj.rating = rating
-    return obj
-}
+const rateColor = (obj, rating) => 
+    ({
+        ...obj,
+        rating
+    })
 
 console.log(color_lawn.rating)
 
-// 원본 수정
 console.log(rateColor(color_lawn, 5).rating)
 console.log(color_lawn.rating)
