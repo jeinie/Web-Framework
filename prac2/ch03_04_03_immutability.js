@@ -4,6 +4,7 @@ let color_lawn = {
     rating: 0
 }
 
+// 함수의 정의와 헷갈리지 않기 위해 괄호 삽입
 const rateColor = (obj, rating) => 
     ({
         ...obj,
