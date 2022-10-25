@@ -4,34 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <title>Document</title>
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
 </head>
 <body>
     <div id="root"></div>
 </body>
-<script>
-    function formatName(user) {
-        return `${user.firstName} ${user.lastName}`
+<script type="text/babel">
+    const Cat = function({name}) {
+        return (
+            <div id="fragment">
+                <h1>고양이 이름은 {name} 입니다.</h1>
+                <p>이 고양이는 멋져요.</p>
+            </div>
+        )
     }
-
-    const user = {
-        firstName: 'Harper',
-        lastName: 'Perez'
-    }
-
-    const element = (
-        <h1>
-            Hello, {formatName(user)}!
-        </h1>
-    )
 
     ReactDOM.render(
-        element,
+        <Cat name="나비"/>,
         document.getElementById('root')
     )
 </script>
