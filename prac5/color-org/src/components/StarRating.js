@@ -3,7 +3,7 @@ import Star from "./Star";
 
 const createArray = length => [...Array(length)];
 const StarRating = function({totalStars = 5}) {
-    const [selectedStars, setSelectedStars] = useState(3);
+    const [selectedStars, setSelectedStars] = useState(3); // useState: 컴포넌트 상태와 상태변경
     return (
         <>
             {createArray(totalStars).map((n, i) => (
