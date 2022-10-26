@@ -15,6 +15,7 @@ const Favorite = () => {
   const createPhrase = () => {
     setPhrase(typed);
     setTyped("");
+    console.log(typed);// 실시간으로 콘솔에 찍히지 않는다. useEffect() 사용해서 해결
   }
 
   return (
