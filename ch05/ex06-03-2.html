@@ -31,19 +31,19 @@ const data = {
     address: "116 Samseongyo-ro"
 }
 
-const location = (
+const locations = (
     <ul>
         {
             // object data -> Object.key() map() -> <li />
-            Object.keys(data).map((obj, i) => (
-                <li key={i}>{obj}: {data[obj]}</li>
+            Object.keys(data).map((obj_prp, i) => (
+                <li key={i}>{obj_prp}: {data[obj_prp]}</li>
             ))
         }
     </ul>
 );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(location);
+root.render(locations);
 
 </script>
 
