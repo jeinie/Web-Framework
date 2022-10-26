@@ -1,0 +1,14 @@
+import React from "react";
+import StarRating from './StarRating';
+
+const Color = function({title, color, rating}) {
+    return (
+        <section>
+            <h1>{title}</h1>
+            <div style={{backgroundColor: color, height:50}}/>
+            <StarRating selectedStars={rating}/>
+        </section>
+    )
+}
+
+export default Color;

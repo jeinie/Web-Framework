@@ -1,9 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
-import StarRating from './components/StarRating';
+import { useState } from 'react';
+import ColorList from './components/ColorList';
+import colorData from './data/color-data.json';
 
 function App() {
-  return <StarRating/>;
+  const [colors] = useState(colorData)
+  return <ColorList colors={colors}/>
 }
 
 export default App;
