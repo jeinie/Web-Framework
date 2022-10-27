@@ -30,6 +30,11 @@
             return sum/numbers.length;
         };
 
+        const avg = React.useMemo(
+            () => getAvergae(list),
+            [list] // 변경된 값 전달
+        );
+
         return (
             <div>
                 <input value={number} onChange={onChange}/>
@@ -37,13 +42,10 @@
                 <ul>
                     {list.map((value, i) => <li key={i}>{value}</li>)}
                 </ul>
-                <div><b>Average: </b>{getAvergae(list)}</div>
+                <div><b>Average: </b>{avg}</div>
             </div>
 
         )
     }
-
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<Average/>)
 </script>
 </html>
