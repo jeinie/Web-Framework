@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Fetch from "./Fetch";
 
 export const useFetch = uri => {
     const [data, setData] = useState()
