@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    const url = "https://api.github.com/users";
+    const GithubUser = ({login}) => {
+        const [data, setData] = React.useState();
+        const [loading, setLoading] = React.useState(false);
+        const [error, setError] = React.useState();
+
+        React.useEffect(() => {
+            if (!loading) return;
+            setLoading(true);
+            fetch(`${url}/${login}`)
+            .then(response => response.json())
+            .then(setData)
+            .then(() => setLoading(false))
+            .catch(setError)
+        }, [login]);
+
+        if (loading) return <h1>loading...</h1>
+        if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>
+        if (!data) return <div>No data</div>
+
+        return (
+            <div className="githubUser">
+                <img src={data.avatar_url} alt={data.login} style={{ width:300 }}/>
+                <div>
+                    <h1>{data.login}</h1>
+                    {data.name && <p>{data.name}</p>}
+                    {data.location && <p>{data.location}</p>}
+                </div>
+            </div>
+        )
+    }
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(<GithubUser login='sp-hsu'/>)
+</script>
+</html>
