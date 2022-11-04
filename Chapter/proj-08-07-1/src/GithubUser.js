@@ -1,5 +1,6 @@
 import { useFetch } from "./hooks"
 import Fetch from './Fetch'
+import UseRepositories from "./UseRepositories"
 
 const GithubUser = ({login}) => (
     <Fetch
@@ -15,6 +16,9 @@ const userDetails = ({ data }) => (
             {data.name && <p>{data.name}</p>}
             {data.location && <p>{data.location}</p>}
         </div>
+        <UseRepositories
+            login={data.login}
+            onSelect={repoName => console.log(`${repoName} selected`)} />
     </div>
 )
 

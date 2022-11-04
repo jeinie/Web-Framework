@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Fetch from "./Fetch";
 
 export const useFetch = uri => {
