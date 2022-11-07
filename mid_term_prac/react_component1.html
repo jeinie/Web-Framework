@@ -16,8 +16,8 @@
         "무염 버터 1컵", "흑설탕 1컵", "달걀 2개", "베이킹 소다 1티스푼"
     ]
 
-    function IngredientsList({items}) {
-        return React.createElement(
+    const IngredientsList = ({items}) => {
+        React.createElement(
             "ul",
             { className: "ingredients" },
             items.map((ingrd, i) => React.createElement("li", {key: i}, ingrd))
