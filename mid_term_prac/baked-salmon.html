@@ -36,14 +36,23 @@
         '올리브 오일 1/2컵'
     ]
 
+    // (1)
+    // const ingredients = React.createElement(
+    //     "ul", {className: "ingredients"},
+    //     items.map( ingredients => React.createElement('li', null, ingredients)) // p 태그 추가
+    // )
+
+    // (2)
     const ingredients = React.createElement(
         "ul", {className: "ingredients"},
-        items.map( ingredients => React.createElement('li', null, ingredients)) // p 태그 추가
+        items.map((ingredient, i) => React.createElement("li", {key: i}, ingredient))
     )
 
     //ReactDOM.render(dish, document.getElementById('react-container'))
     //console.log('dish element', dish)
+    //ReactDOM.render(ingredients, document.getElementById('react-container'))
     ReactDOM.render(ingredients, document.getElementById('react-container'))
-    console.log('ingredients', ingredients)
+    //console.log('ingredients', ingredients)
+    console.log('ingredients1', ingredients)
 </script>
 </html>
