@@ -24,6 +24,7 @@ const schools1 = {
 
 console.log(schools1)
 
+// 3) Object.keys()
 const schoolArray = Object.keys(schools1).map(key => ({
     name: key,
     wins: schools1[key]
@@ -31,3 +32,10 @@ const schoolArray = Object.keys(schools1).map(key => ({
 console.log(Object.keys(schools1))
 console.log(schoolArray)
 
+// 4) reduce()
+const colors = ["red", "red", "green", "blue", "green"]
+const distinctColors = colors.reduce(
+    (distinct, color) => (distinct.indexOf(color) !== -1) ? distinct : [...distinct, color], [] // 존재하지 않으면 베열에 해당 요소 추가
+)
+
+console.log(distinctColors)
