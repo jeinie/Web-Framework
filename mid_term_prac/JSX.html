@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    // JSX 활용
+    const data = [
+        {
+            "name": "Baked Salmon",
+            "ingredients": [
+                {"name": "연어", "amount": 500},
+                {"name": "잣", "amount": 1}
+            ],
+            "steps": [
+                "오븐을 180도로 예열한다.",
+                "유리 베이킹 그릇에 올리브 오일을 두른다."
+            ]
+        },
+        {
+            "name": "Fish Tacos",
+            "ingredients": [
+                {"name": "흰살생선", "amount": 500},
+                {"name": "치즈", "amount": 300}
+            ],
+            "steps": [
+                "생선을 그릴에 익힌다.",
+                "또띠야 3장 위에 생선을 얹는다."
+            ]
+        }
+    ]
+    
+    // Menu Component
+    const Menu = function(props) {
+        return (
+            <section>
+                <header>
+                    <h1>{props.title}</h1>
+                </header>
+                <div className="recipes">
+                    {props.recipes.map((recipe, i) => 
+                        (<Recipe key={i}
+                        name={recipe.name}
+                        ingredients={recipe.ingredients}
+                        steps={recipe.steps}/>))}
+                </div>
+            </section>
+        )
+    }
+
+    // Recipe Component
+    const Recipe = function({name, ingredients, steps}) {
+        return (
+            <section>
+                <h1>{name}</h1>
+                <ul>
+                    {ingredients.map((ingrd, i) => <li key={i}>{ingrd.name}</li>)}
+                </ul>
+                <section>
+                    <h3>recipe</h3>
+                    <ul>
+                        {steps.map((step, i) => (<p key={i}>{step}</p>))}
+                    </ul>
+                </section>
+            </section>
+        )
+    }
+
+    ReactDOM.render(
+        <Menu recipes={data} title="recipes"/>, // props
+        document.getElementById('root')
+    )
+</script>
+</html>
