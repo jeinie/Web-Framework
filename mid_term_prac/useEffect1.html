@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    const Info = () => {
+        const [name, setName] = React.useState("");
+        const [nickname, setNickname] = React.useState("");
+
+        React.useEffect(
+            () => {
+                console.log(`useEffect(): 화면에 나타남`);
+                console.log(`name: ${name}`);
+                // cleanup 함수 : 컴포넌트가 사라지기 전 실행
+                return () => {
+                console.log(`useEffect(), cleanup: 화면에서 사라짐`);
+                console.log(`name: ${name}`);
+            }
+            }
+        ), [] // 최초의 렌더링에만 1번 실행 (원소가 없는 배열이므로)
+
+        const onChangeName = e => setName(e.target.value);
+        const onChangeNickname = e => setNickname(e.target.value);
+
+        return (
+            <>
+                <div>
+                    <input value={name} onChange={onChangeName} />
+                    <input value={nickname} onChange={onChangeNickname}/>
+                </div>
+                <div><b>Name: </b>{name}</div>
+                <div><b>Nickname: </b>{nickname}</div>
+            </>
+        )
+    }
+
+    const App = () => {
+        const [visible, setVisible] = React.useState(false);
+        return (
+            <>
+                <button onClick={() => setVisible(!visible)}>{visible ? "숨기기" : "보이기"}</button>
+                {visible && <Info/>}
+            </>
+        )
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App/>);
+</script>
+</html>
