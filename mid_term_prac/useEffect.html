@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    // useEffect : 컴포넌트가 렌더링된 후에 수행할 동작 정의 (Hooks)
+    const Favorite = () => {
+        const [typed, setTyped] = React.useState(""); // 초기상태 / setTyped 되면
+        const [phrase, setPhrase] = React.useState("ex-phrase"); // 초기상태
+
+        const createPhrase = () => {
+            setPhrase(typed);
+            setTyped("");
+        }
+
+        // 상태가 변경될 때마다 렌더링 발생
+        React.useEffect(() => console.log(`typing: "${typed}"`), [typed]); // typed가 변경될 때만 실행 (뒤에 조건 명시)
+        React.useEffect(() => console.log(`saved: "${phrase}"`), [phrase]); // phrase가 변경될 때만 실행 (뒤에 조건 명시)
+
+        return (
+            <>
+                <label>Favorite phrase</label>
+                <input value={typed} placeholder={phrase} onChange={e => setTyped(e.target.value)}/>
+                <button onClick={createPhrase}>send</button>
+            </>
+        )
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(<Favorite/>)
+</script>
+</html>
