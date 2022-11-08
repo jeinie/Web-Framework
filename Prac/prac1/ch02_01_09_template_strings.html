@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Template Strings</h1>
+    <p>Open the console</p>
+</body>
+<script>
+    var lastName = 'Oh'
+    var middleName = '현석'
+    var firstName = 'Frank'
+    var ticketAgent = '예술의 전당'
+    var event = '서태지와 아이들'
+    var qty = 2
+    var price = 10
+
+    console.log(`
+    ${firstName} 님께,
+    ${event} 티켓 ${qty} 건을 구매해주셔서 감사합니다.
+
+    주문 상세 정보:
+        ${lastName} ${firstName} ${middleName}
+        ${qty} x $${price} = $${qty*price} rhddu: ${event}
+
+    공연시작 30분 전까지 배부처에서 티켓을 수령해주시기 바랍니다.
+    감사합니다.
+
+    ${ticketAgent} 드림
+    `)
+</script>
+</html>

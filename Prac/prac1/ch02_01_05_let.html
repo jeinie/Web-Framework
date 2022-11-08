@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style media="screen">
+        #container {
+            display: flex;
+            justify-content: space-around;
+        }
+  
+        #container>div {
+            height: 5em;
+            width: 5em;
+            background-color: purple;
+        }
+      </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>박스를 클릭하세요</h1>
+    <div id="container"></div>
+</body>
+<script>
+    var div,
+    container = document.getElementById('container')
+
+    for (var i=0; i<5; i++) {
+        div = document.createElement('div')
+        div.onclick = function() {
+            console.log(`onclick 안에서 i = ${i}`) // 모두 5 (var 이므로 / let 이면 0 1 2 3 4 각 해당하는 번호로 찍힘)
+            alert('이것은 박스 #' + i + '입니다')
+        }
+        console.log(`onclick 밖에서 i = ${i}`) // 0 1 2 3 4
+        container.appendChild(div)
+    }
+</script>
+</html>

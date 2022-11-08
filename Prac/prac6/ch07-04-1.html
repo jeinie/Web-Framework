@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script type="text/babel">
+    const Average = () => {
+        const [list, setList] = React.useState([]);
+        const [number, setNumber] = React.useState('');
+
+        const onChange = e => setNumber(e.target.value);
+        const onInsert = e => {
+            const nextList = list.concat(parseInt(number));
+            setList(nextList);
+            setNumber('');
+        };
+        const getAvergae = numbers => {
+            console.log("calculating average..", list);
+            if (numbers.length === 0) return 0;
+            const sum = numbers.reduce((a,b) => a+b);
+            return sum/numbers.length;
+        };
+
+        return (
+            <div>
+                <input value={number} onChange={onChange}/>
+                <button onClick = {onInsert()}>Insert</button>
+                <ul>
+                    {list.map((value, i) => <li key={i}>{value}</li>)}
+                </ul>
+                <div><b>Average: </b>{getAvergae(list)}</div>
+            </div>
+
+        )
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Average/>)
+</script>
+</html>
