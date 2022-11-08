@@ -14,11 +14,22 @@
 </body>
 <script type="text/babel">
     const Checkbox = () => {
-       const [checked, setChecked] = React.useState(false);
+        // useReducer() : 현재 상태와 액션을 전달받아 새로운 상태를 반환 
+        /*const [checked, toggle] = React.useReducer(
+            checked => !checked, // 현재 상태를 변경
+            false // 초기값
+        );*/
+        //const toggle = () => setChecked(checked => !checked)
+
+        const reducer = a => !a; // 별도의 함수로 정의
+        const [checked, toggle] = React.useReducer(
+            reducer,
+            false
+        )
 
         return (
             <>
-                <input type="checkbox" value={checked} onChange={() => setChecked(checked => !checked)}/>
+                <input type="checkbox" value={checked} onChange={toggle}/>
                 {checked ? "checked" : "not checked"}
             </>
         ) 
