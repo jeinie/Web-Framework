@@ -24,8 +24,11 @@
         }
 
         // 상태가 변경될 때마다 렌더링 발생
-        React.useEffect(() => console.log(`typing: "${typed}"`), [typed]); // typed가 변경될 때만 실행 (뒤에 조건 명시)
-        React.useEffect(() => console.log(`saved: "${phrase}"`), [phrase]); // phrase가 변경될 때만 실행 (뒤에 조건 명시)
+        //React.useEffect(() => console.log(`typing: "${typed}"`), [typed]); // typed가 변경될 때만 실행 (뒤에 조건 명시)
+        //React.useEffect(() => console.log(`saved: "${phrase}"`), [phrase]); // phrase가 변경될 때만 실행 (뒤에 조건 명시)
+        
+        // 위 두 줄을 하나로 합치면 (typed나 phrase가 변경될 때 실행, typed 는 계속 바뀌므로 항상 실행됨)
+        React.useEffect(() => console.log(`either typed or phrase changed: "${typed}", "${phrase}"`), [typed, phrase]);
 
         return (
             <>
