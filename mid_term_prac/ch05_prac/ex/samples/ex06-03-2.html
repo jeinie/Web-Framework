@@ -36,6 +36,9 @@ const location = (
         {
             // object data -> Object.key() map() -> <li />
             // code here
+            Object.keys(data).map((obj, i) => (
+                <li key={i}>{obj}: {data[obj]}</li>
+            ))
         }
     </ul>
 );
