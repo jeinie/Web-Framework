@@ -34,6 +34,15 @@ const data = [
 
 // MajorList() component with parameter
 // code here
+const MajorList = function({majors}) {
+    return (
+        <ul>
+            {majors.map((major, i) => (
+                <li key={i}>{major}</li>
+            ))}
+        </ul>
+    )
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MajorList majors={data} />);
