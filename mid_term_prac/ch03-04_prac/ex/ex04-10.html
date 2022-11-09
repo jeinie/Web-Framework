@@ -34,9 +34,17 @@ const address = [
 
 // code here
 const addr = React.createElement(
-    "ul",
-    {id: 'react-container'},
-    addrss.map(add => React.createElement())
+    "section",
+    {id: 'address'},
+    React.createElement(
+        "ul",
+        {class: 'contents'},
+        address.map(add => React.createElement(
+            'li',
+            null,
+            add
+        ))
+    )
 )
 
 ReactDOM.render(
