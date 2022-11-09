@@ -39,6 +39,13 @@ const address = [
 class Address extends React.Component {
 // define Address class component
 // code here
+    render() {
+        return React.createElement(
+            "ul",
+            {className: "address"},
+            this.props.data.map((addr, i) => React.createElement('li', null, addr))
+        )
+    }
 }
 
 // create root & render root at react@18
