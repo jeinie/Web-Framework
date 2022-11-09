@@ -21,8 +21,8 @@
 <script type="text/babel">
 
 /**
- * ex06-04-3.html
- * 데이터 확장(1) - 리액트 컴포넌트
+ * ex06-04-5.html
+ * 데이터 확장(1) - 리액트 컴포넌트, 매개변수 포함
  */
 
 const data = {
@@ -42,27 +42,34 @@ const data = {
 
 // Place() component
 // code here
+const Place = ({name, locations, majors}) => 
 (
-    <section id={data.name.toLowerCase().replace(/ /g, "-")}>
-        <h2>{data.name}</h2>
+    <section id={name.toLowerCase().replace(/ /g, "-")}>
+        <h2>{// show name from parameter, code here
+            }</h2>
         <h3>Location</h3>
         <ul className="locations">
-            {Object.keys(data.locations).map((obj_prp, i) => (
-                <li key={i}>{obj_prp}: {data.locations[obj_prp]}</li>
-            ))}
+            {// show locations from parameter
+             // code here
+                Object.keys(locations).map((obj, i) => (
+                    <li key={i}>{obj}: {locations[obj]}</li>
+                ))
+            }
         </ul>
         <h3>Majors</h3>
         <ul className="majors">            
-            {data.majors.map((major, i) => (
-                <li key={i}>{major}</li>
-            ))}
+            {// show majors from parameter
+             // code here
+             Object.keys(majors).map((obj, i) => (
+                    <li key={i}>{majors[obj]}</li>
+                ))
+            }
         </ul>
     </section>
 );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render <Place />
-// code here
+root.render(<Place name={data.name} locations={data.locations} majors={data.majors} />);
 
 </script>
 

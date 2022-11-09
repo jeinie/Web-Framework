@@ -21,8 +21,8 @@
 <script type="text/babel">
 
 /**
- * ex06-04-6.html
- * 데이터 확장(1) - 리액트 컴포넌트 분리
+ * ex06-04-3.html
+ * 데이터 확장(1) - 리액트 컴포넌트
  */
 
 const data = {
@@ -40,64 +40,31 @@ const data = {
     ]
 };
 
-// Famous() component with parameter
+// Place() component
 // code here
+const Place = () => 
 (
-    <div>
-        <header>
-            <h1>{props.title}</h1>
-        </header>
-        <article className="places">
-            <Place
-                name={props.famous.name}
-                locations={props.famous.locations}
-                majors={props.famous.majors}
-            />
-        </article>
-    </div>
-);
-
-// Place() component with parameter
-// code here
-(
-    <section id={name.toLowerCase().replace(/ /g, "-")}>
-        <h2>{name}</h2>
-        <Location locations={locations} />
-        <Majors majors={majors} />
-    </section>
-);
-
-// Location() component with parameter
-// code here
-(
-    <>
+    <section id={data.name.toLowerCase().replace(/ /g, "-")}>
+        <h2>{data.name}</h2>
         <h3>Location</h3>
         <ul className="locations">
-            {Object.keys(locations).map((obj_prp, i) => (
-                <li key={i}>{obj_prp}: {locations[obj_prp]}</li>
+            {Object.keys(data.locations).map((obj_prp, i) => (
+                <li key={i}>{obj_prp}: {data.locations[obj_prp]}</li>
             ))}
         </ul>
-    </>
-);
-
-// Majors() component with parameter
-// code here
-(
-    <>
         <h3>Majors</h3>
-        <ul className="majors">
-            {majors.map((major, i) => (
+        <ul className="majors">            
+            {data.majors.map((major, i) => (
                 <li key={i}>{major}</li>
             ))}
         </ul>
-    </>
+    </section>
 );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Famous famous={data} title="Famous places" />);
+root.render (<Place />)
 
 </script>
 
 </body>
 </html>
-
