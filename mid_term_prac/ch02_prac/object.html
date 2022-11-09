@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 전역 scope에서 this 값 확인
+    console.log(`scope: global >> ${this}`); // window
+
+    // obj1 객체 생성
+    const obj1 = {
+        // 속성 obj_this에 this 할당
+        obj_this: this, // window
+        // 메서드1 정의: 함수 선언문 func1()
+        func1() {
+            //console.log(`this: ${this}, this.obj_this: ${this.obj_this}`);
+            console.log(this); // obj1
+            console.log(this.obj_this) // window
+
+            // 함수 표현식으로 this 값 확인
+            const funcFunc1 = function() {
+                console.log(this);
+            }
+            funcFunc1()
+
+            const funcFunc2 = () => {
+                console.log(this); // obj1
+                console.log(this.obj_this) // window
+            }
+            funcFunc2()
+
+            // 함수 표현식으로 구현, this 바인딩 후 호출
+            const funcFunc3 = function() {
+                console.log(this); // obj1
+                console.log(this.obj_this) // window
+            }.bind(this);
+            funcFunc3();
+
+            setTimeout(function() {
+                console.log(this);
+                console.log(this === window); // true
+                console.log(this === undefined); // false
+            })
+
+            setTimeout(() => {
+                // 위와 같음ㄴ
+            })
+        }
+    }
+    obj1.func1()
+</script>
+</html>
