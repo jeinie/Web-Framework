@@ -48,12 +48,18 @@ const place = (
         <ul className="locations">
             {// show location data
              // code here
+             Object.keys(data.locations).map((obj, i) => (
+                <li key={i}>{obj}: {data.locations[obj]}</li>
+             ))
             }
         </ul>
         <h3>Majors</h3>
         <ul className="majors">            
             {// show majors data
              // code here
+                Object.keys(data.majors).map((obj, i) => (
+                    <li key={i}>{obj}: {data.majors[obj]}</li>
+                ))
             }
         </ul>
     </section>
