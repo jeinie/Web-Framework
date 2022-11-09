@@ -23,10 +23,18 @@ const ages = [ 20, 50, 60, 35, 70, 25, 45 ];
 console.log( ages );
 
 // code here
+const maxAge = ages.reduce((max, age) => {
+    if (age > max) max = age
+    return max
+}, 0)
+console.log(`maxAge1 = ${maxAge}`)
 
 // code here
-
-console.log( ages );
+const maxFinder1 = (list) => list.reduce((max, age) => {
+    if (age > max) max = age
+    return max
+}, 0)
+console.log(`maxAge2 = ${maxFinder1(ages)}`);
 
 </script>
 </body>
