@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>ex05-02-6Q from ch04-03-01-4-functions.html</title>
+    <title>ex05-02-1Q from ch04-03-01-2-functions.html</title>
 </head>
 <body>
 
@@ -10,17 +10,18 @@
 <div id="root"></div>
 
 <!-- React Library & React DOM-->
-<!--
+
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
--->
+<!--
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+-->
 
 <script>
 
-/** ex05-02-6Q.html
- * function components, with parameters, react@18
+/** ex05-02-1Q.html
+ * function components, without parameters, react@16
  */
 
 const address = [
@@ -35,18 +36,20 @@ const address = [
     "South Korea"
 ];
 
-const Address = // define function component with a parameter object, code here
-  return React.createElement(
-    "ul", 
-    { className: "address" },
-// create elements with the parameter and map(), code here
-  );
+const Address = function(){
+// define function component without parameters
+// code here
+    return React.createElement(
+        "ul",
+        {className: "address"},
+        address.map((add, i) => React.createElement("li", {key: i}, add))
+    )
 }
 
-// create root
-const root = ReactDOM.createRoot(document.getElementById('root'));
-// render root with Address component with data at react@18
-// code here
+ReactDOM.render(
+    React.createElement(Address, null, null),
+    document.getElementById("root")
+);
 
 </script>
 
