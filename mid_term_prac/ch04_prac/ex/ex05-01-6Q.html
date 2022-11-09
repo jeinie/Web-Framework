@@ -48,6 +48,7 @@ const addr = React.createElement(
         {className: "contents"},
 // create elements with array, map() and key property
 // code here
+        address.map((add ,i) => React.createElement("li", {key:i}, add))
     )
 );
 
