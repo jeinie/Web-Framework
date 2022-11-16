@@ -19,19 +19,19 @@
             console.log(`type = ${action.type}`);
             switch(action.type) {
                 case 'DECREMENT':
-                    return {value: state.value - 1};
+                    return state - 1;
                 case 'INCREMENT':
-                    return {value: state.value + 1};
+                    return state+ 1;
                 default:
                     return state;
             }
         }
         
-        const [state, dispatch] = React.useReducer(reducer, {value:0}); // 초기상태 {value:0}
+        const [state, dispatch] = React.useReducer(reducer, 0); // 초기상태 {value:0}
 
         return (
             <>
-                <p>Current counter is <b>{state.value}</b></p>
+                <p>Current counter is <b>{state}</b></p>
                 <button onClick={() => dispatch({type: 'DECREMENT'})}>-1</button>
                 <button onClick={() => dispatch({type: 'INCREMENT'})}>+1</button>
             </>
